@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace ComaxTestWF
             DataSet dataset = new DataSet();
             try
             {
-                dataset.ReadXml(Environment.CurrentDirectory + "\\xml_ex.xml");
+                dataset.ReadXml("xml_ex.xml");
             }
             catch
             {
@@ -140,7 +141,4 @@ namespace ComaxTestWF
             codeTxtBox.Text = "";
         }
     }
-
-
-
 }
