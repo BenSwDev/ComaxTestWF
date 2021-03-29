@@ -107,25 +107,55 @@ namespace ComaxTestWF
 
         private void nameTxtBox_TextChanged(object sender, EventArgs e)
         {
-            if (codeTxtBox.Text.Equals(""))
+            if(nameTxtBox.Text != "'")
             {
-                searchInTxtBox("Nm LIKE '%{0}%'", nameTxtBox.Text);
+                try
+                {
+                    if (codeTxtBox.Text.Equals(""))
+                    {
+                        searchInTxtBox("Nm LIKE '%{0}%'", nameTxtBox.Text);
+                    }
+                    else
+                    {
+                        searchInTxtBox("Kod LIKE '%{0}%' and Nm LIKE '%{1}%'", codeTxtBox.Text, nameTxtBox.Text);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Illegal char");
+                }
             }
             else
             {
-                searchInTxtBox("Kod LIKE '%{0}%' and Nm LIKE '%{1}%'", codeTxtBox.Text, nameTxtBox.Text);
+                nameTxtBox.Text = "";
+                codeTxtBox.Text = "";
             }
         }
 
         private void codeTxtBox_TextChanged(object sender, EventArgs e)
         {
-            if(nameTxtBox.Text.Equals(""))
+            if (codeTxtBox.Text != "'")
             {
-                searchInTxtBox("Kod LIKE '%{0}%'", codeTxtBox.Text);
+                try
+                {
+                    if (nameTxtBox.Text.Equals(""))
+                    {
+                        searchInTxtBox("Kod LIKE '%{0}%'", codeTxtBox.Text);
+                    }
+                    else
+                    {
+                        searchInTxtBox("Kod LIKE '%{0}%' and Nm LIKE '%{1}%'", codeTxtBox.Text, nameTxtBox.Text);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Illegal char");
+                }
             }
             else
             {
-                searchInTxtBox("Kod LIKE '%{0}%' and Nm LIKE '%{1}%'", codeTxtBox.Text, nameTxtBox.Text);
+                nameTxtBox.Text = "";
+                codeTxtBox.Text = "";
             }
         }
 
